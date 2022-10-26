@@ -1,12 +1,12 @@
 import IUserServiceRepository from './IUserServiceRepository';
-import User from '../../database/models/UserModel';
 import IUser from '../entities/IUser';
+import UserModel from '../../database/models/UserModel';
 
 class UserServiceRepository implements IUserServiceRepository {
-  private _model: UserModel;
+  private userModel = UserModel;
 
   public findByEmail = async (email: string) => {
-    const userFinded = await this._model.findOne({ where: email });
+    const userFinded = await this.userModel.findOne({ where: { email } });
 
     if (!userFinded) return null;
 
