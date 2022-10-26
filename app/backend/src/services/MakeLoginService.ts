@@ -1,7 +1,7 @@
-import IUserServiceRepository from './repositories/IUserServiceRepository';
+import IUserServiceRepositore from './repositories/IUserServiceRepository';
 
 class MakeLoginService {
-  private userRepository: IUserServiceRepository;
+  private userRepository: IUserServiceRepositore;
 }
 
 export default MakeLoginService;
