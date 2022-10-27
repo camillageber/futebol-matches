@@ -1,13 +1,16 @@
-// import { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction } from 'express';
 // import { StatusCodes } from 'http-status-codes';
-// import UnauthorizedError from '../errors';
+import { UnauthorizedError, BadRequestError } from '../errors';
 
-// const handleErrors = (err: Error, req: Request, res: Response, _next: NextFunction) => {
-//   if (err instanceof UnauthorizedError) {
-//     return res.status(StatusCodes.UNAUTHORIZED).json({ message: err.message });
-//   }
+const handleErrors = (err: Error, req: Request, res: Response, _next: NextFunction) => {
+  if (err instanceof UnauthorizedError) {
+    return res.status(401).json({ message: err.message });
+  }
+  if (err instanceof BadRequestError) {
+    return res.status(400).json({ message: err.message });
+  }
 
-//   return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ message: 'Internal Server Error' });
-// };
+  return res.status(500).json({ message: 'Internal Server Error' });
+};
 
-// export default handleErrors;
+export default handleErrors;

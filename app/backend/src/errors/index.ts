@@ -1,3 +1,4 @@
 import UnauthorizedError from './UnauthorizedError';
+import BadRequestError from './BadRequestError';
 
-export default UnauthorizedError;
+export { UnauthorizedError, BadRequestError };
