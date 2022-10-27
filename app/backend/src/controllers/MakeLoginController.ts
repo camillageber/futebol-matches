@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import MakeLoginService from '../services';
+import MakeLoginService from '../services/MakeLoginService';
 import 'express-async-errors';
 
 export default class MakeLoginController {
