@@ -8,6 +8,7 @@ import IUserServiceRepository from './repositories/IUserServiceRepository';
 class MakeLoginService {
   private _userRepository: IUserServiceRepository;
   private missingFields = 'All fields must be filled';
+  private incorretFilds = 'Incorrect email or password';
 
   constructor(userRepository: IUserServiceRepository) {
     this._userRepository = userRepository;
@@ -17,11 +18,11 @@ class MakeLoginService {
     await this.validateRequest({ email, password });
     const user = await this._userRepository.findByEmail(email);
 
-    if (!user) throw new BadRequestError(this.missingFields);
+    if (!user) throw new UnauthorizedError(this.incorretFilds);
 
     const passwordDataBase = user.password;
-    const compare = bcrypt.compareSync(user.password, passwordDataBase);
-    if (!compare) throw new BadRequestError('Incorrect email or password');
+    const compare = bcrypt.compareSync(password, passwordDataBase);
+    if (!user || !compare) throw new UnauthorizedError(this.incorretFilds);
 
     const token = TokenManager.makeToken(user);
     return token;
@@ -32,7 +33,7 @@ class MakeLoginService {
       email: Joi.string().email().required().messages({
         'any.required': this.missingFields,
         'string.empty': this.missingFields,
-        'string.email': 'Incorrect email or password',
+        'string.email': this.incorretFilds,
       }),
       password: Joi.string().required().messages({
         'any.required': this.missingFields,
@@ -40,12 +41,7 @@ class MakeLoginService {
       }),
     });
     const { error } = schema.validate(login);
-    if (error) {
-      if (error.message.includes('required')) {
-        throw new BadRequestError(error.message);
-      }
-      throw new UnauthorizedError(error.message);
-    }
+    if (error) throw new BadRequestError(error.message);
   }
 }
 export default MakeLoginService;
