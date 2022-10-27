@@ -9,10 +9,15 @@ export default class MakeLoginController {
     this._makeLoginService = makeLoginService;
   }
 
-  public execute = async (req: Request, res: Response) => {
+  public execute = async (req: Request, res: Response): Promise<Response> => {
     const { email, password } = req.body;
 
     const token = await this._makeLoginService.execute({ email, password });
     return res.status(200).json({ token });
+  };
+
+  public validate = (req: Request, res: Response): Response => {
+    const { role } = req.body;
+    return res.status(200).json({ role });
   };
 }
