@@ -12,7 +12,7 @@ class TeamServiceRepository implements ITeamServiceRepository {
   };
 
   public findOne = async (id: number) => {
-    const team = await this._teamModel.findByPk(id);
+    const team = await this._teamModel.findByPk(id, { raw: true });
     if (!team) return null;
 
     return team;

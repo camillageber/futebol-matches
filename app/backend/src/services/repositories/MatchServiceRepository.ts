@@ -1,5 +1,6 @@
 import MatchModel from '../../database/models/MatchModel';
 import Team from '../../database/models/TeamModel';
+import { IMatch } from '../entities/IMatch';
 import IMatchServiceRepository from './IMatchServiceRepository';
 
 class MatchServiceRepository implements IMatchServiceRepository {
@@ -25,6 +26,14 @@ class MatchServiceRepository implements IMatchServiceRepository {
     });
 
     return macthesInProgress;
+  };
+
+  public create = async (match: IMatch) => {
+    console.log('entrei no repo match');
+    const addMatch = await this._matchModel.create({ ...match, inProgress: true });
+
+    console.log('partida adicionada no repo');
+    return addMatch;
   };
 }
 
