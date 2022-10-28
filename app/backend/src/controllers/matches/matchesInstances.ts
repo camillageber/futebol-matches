@@ -5,6 +5,8 @@ import CreateMatchService from '../../services/CreateMatchService';
 import CreateMatchController from './CreateMatchController';
 import UpdateFinishMatchService from '../../services/UpdateFinishMatchService';
 import UpdateFinishMatchController from './UpdateFinishMatchController';
+import UpdateMatchResultService from '../../services/UpdateMatchResultService';
+import UpdateMatchResultController from './UpdateMatchResultController';
 
 const matchServiceRepository = new MatchServiceRepository();
 const getAllMatchesService = new GetAllMatchesService(matchServiceRepository);
@@ -16,4 +18,12 @@ const createMatchController = new CreateMatchController(createMatchService);
 const updateFinishMatchService = new UpdateFinishMatchService(matchServiceRepository);
 const updateFinishMatchController = new UpdateFinishMatchController(updateFinishMatchService);
 
-export { getAllMatchesController, createMatchController, updateFinishMatchController };
+const updateMatchResultService = new UpdateMatchResultService(matchServiceRepository);
+const updateMatchResultController = new UpdateMatchResultController(updateMatchResultService);
+
+export {
+  getAllMatchesController,
+  createMatchController,
+  updateFinishMatchController,
+  updateMatchResultController,
+};

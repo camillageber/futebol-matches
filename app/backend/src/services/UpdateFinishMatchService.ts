@@ -1,6 +1,6 @@
 import MatchServiceRepository from './repositories/MatchServiceRepository';
 
-class CreateMatchService {
+class UpdateFinishMatchService {
   private _matchRepository: MatchServiceRepository;
 
   constructor(matchRepository: MatchServiceRepository) {
@@ -13,4 +13,4 @@ class CreateMatchService {
   };
 }
 
-export default CreateMatchService;
+export default UpdateFinishMatchService;

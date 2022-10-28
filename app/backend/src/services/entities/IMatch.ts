@@ -15,3 +15,8 @@ export default interface IMatchWithTeamsNames extends IMatch {
     teamName:string;
   }
 }
+
+export interface IMatchGoals {
+  homeTeamGoals: number;
+  awayTeamGoals: number;
+}

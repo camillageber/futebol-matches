@@ -1,6 +1,6 @@
 import MatchModel from '../../database/models/MatchModel';
 import Team from '../../database/models/TeamModel';
-import { IMatch } from '../entities/IMatch';
+import { IMatch, IMatchGoals } from '../entities/IMatch';
 import IMatchServiceRepository from './IMatchServiceRepository';
 
 class MatchServiceRepository implements IMatchServiceRepository {
@@ -29,7 +29,7 @@ class MatchServiceRepository implements IMatchServiceRepository {
   };
 
   public create = async (match: IMatch) => {
-    console.log('entrei no repo match');
+    // console.log('entrei no repo match');
     const addMatch = await this._matchModel.create({ ...match, inProgress: true });
 
     return addMatch;
@@ -38,6 +38,14 @@ class MatchServiceRepository implements IMatchServiceRepository {
   public updateFinish = async (id: number): Promise<void> => {
     await this._matchModel.update(
       { inProgress: false },
+      { where: { id } },
+    );
+  };
+
+  public updateResults =
+  async (id: number, { homeTeamGoals, awayTeamGoals }: IMatchGoals): Promise<void> => {
+    await this._matchModel.update(
+      { homeTeamGoals, awayTeamGoals },
       { where: { id } },
     );
   };

@@ -4,6 +4,7 @@ import {
   getAllMatchesController,
   createMatchController,
   updateFinishMatchController,
+  updateMatchResultController,
 } from './matches/matchesInstances';
 
 export {
@@ -13,4 +14,5 @@ export {
   getAllMatchesController,
   createMatchController,
   updateFinishMatchController,
+  updateMatchResultController,
 };
