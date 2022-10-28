@@ -32,9 +32,14 @@ class MatchServiceRepository implements IMatchServiceRepository {
     console.log('entrei no repo match');
     const addMatch = await this._matchModel.create({ ...match, inProgress: true });
 
-    console.log('partida adicionada no repo');
     return addMatch;
   };
-}
 
+  public updateFinish = async (id: number): Promise<void> => {
+    await this._matchModel.update(
+      { inProgress: false },
+      { where: { id } },
+    );
+  };
+}
 export default MatchServiceRepository;

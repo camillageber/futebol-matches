@@ -1,5 +1,5 @@
 import { NotFoundError, UnprocessableEntityError } from '../errors';
-import IMatchWithTeamsNames, { IMatch } from './entities/IMatch';
+import { IMatch } from './entities/IMatch';
 import MatchServiceRepository from './repositories/MatchServiceRepository';
 import TeamServiceRepository from './repositories/TeamServiceRepository';
 
@@ -12,20 +12,10 @@ class CreateMatchService {
     this._teamRepository = new TeamServiceRepository();
   }
 
-  public getAllMatches = async (): Promise<IMatch[] | IMatchWithTeamsNames[] | null> => {
-    const matches = await this._matchRepository.getAll();
-    return matches;
-  };
-
-  public getAllInProgress = async (progress: boolean) => {
-    const matchesInProgress = await this._matchRepository.getAllInProgress(progress);
-    return matchesInProgress;
-  };
-
   public createMatch = async (match: IMatch) => {
     console.log('entrei no service createMatch');
     if (match.awayTeam === match.homeTeam) {
-      console.log(match.awayTeam, match.homeTeam, 'console matches');
+      // console.log(match.awayTeam, match.homeTeam, 'console matches');
       throw new UnprocessableEntityError(
         'It is not possible to create a match with two equal teams',
       );
@@ -38,10 +28,10 @@ class CreateMatchService {
     if (!homeTeam || !awayTeam) {
       throw new NotFoundError('There is no team with such id!');
     }
-    console.log('passei da validação notfound');
+    // console.log('passei da validação notfound');
 
     const addMatch = await this._matchRepository.create(match);
-    console.log('inseriu a partida -- addMatchService');
+    // console.log('inseriu a partida -- addMatchService');
     return addMatch;
   };
 }

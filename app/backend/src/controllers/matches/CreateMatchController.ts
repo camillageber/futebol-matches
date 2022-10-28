@@ -11,7 +11,7 @@ class CreateMatchController {
 
   public createMatch = async (req: Request, res: Response): Promise<Response> => {
     const match = req.body;
-    console.log(match, 'controller match');
+    // console.log(match, 'controller match');
     const addMatch = await this._createMatchService.createMatch(match);
     return res.status(201).json(addMatch);
   };
