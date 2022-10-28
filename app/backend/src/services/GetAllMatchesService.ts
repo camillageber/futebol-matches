@@ -12,6 +12,11 @@ class GetAllMatchesService {
     const matches = await this._matchRepository.getAll();
     return matches;
   };
+
+  public getAllInProgress = async (progress: boolean) => {
+    const matchesInProgress = await this._matchRepository.getAllInProgress(progress);
+    return matchesInProgress;
+  };
 }
 
 export default GetAllMatchesService;

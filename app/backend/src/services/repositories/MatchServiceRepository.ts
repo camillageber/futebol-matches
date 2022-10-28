@@ -14,6 +14,18 @@ class MatchServiceRepository implements IMatchServiceRepository {
     });
     return matches;
   };
+
+  public getAllInProgress = async (progress: boolean) => {
+    const macthesInProgress = await this._matchModel.findAll({
+      where: { inProgress: progress },
+      include: [
+        { model: Team, as: 'teamHome', attributes: ['teamName'] },
+        { model: Team, as: 'teamAway', attributes: ['teamName'] },
+      ],
+    });
+
+    return macthesInProgress;
+  };
 }
 
 export default MatchServiceRepository;
