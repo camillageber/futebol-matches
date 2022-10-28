@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import GetAllMatchesService from '../services/GetAllMatchesService';
+import 'express-async-errors';
 
 class GetAllMatchesController {
   private _getAllMatchesService: GetAllMatchesService;
