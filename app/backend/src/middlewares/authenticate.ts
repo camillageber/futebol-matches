@@ -15,7 +15,7 @@ const authenticate = async (req: Request, res: Response, next: NextFunction) => 
     return res.status(401).json({ message: 'Token must be a valid token' });
   }
 
-  req.body = data;
+  req.body.data = data;
 
   return next();
 };

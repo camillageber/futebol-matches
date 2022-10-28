@@ -17,7 +17,7 @@ export default class MakeLoginController {
   };
 
   public validate = (req: Request, res: Response): Response => {
-    const { role } = req.body;
+    const { role } = req.body.data;
     return res.status(200).json({ role });
   };
 }
