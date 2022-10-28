@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import GetOneTeamService from '../services/GetOneTeamService';
+import GetOneTeamService from '../../services/GetOneTeamService';
 
 class GetOneTeamController {
   private _getOneTeamService: GetOneTeamService;

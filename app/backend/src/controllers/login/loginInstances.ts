@@ -1,4 +1,4 @@
-import MakeLoginController from '../MakeLoginController';
+import MakeLoginController from './MakeLoginController';
 import MakeLoginService from '../../services/MakeLoginService';
 import UserServiceRepository from '../../services/repositories/UserServiceRepository';
 

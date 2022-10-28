@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import GetAllTeamsService from '../services/GetAllTeamsService';
+import GetAllTeamsService from '../../services/GetAllTeamsService';
 
 class GetAllTeamsController {
   private _getAllTeamsService: GetAllTeamsService;

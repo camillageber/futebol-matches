@@ -1,7 +1,7 @@
-import GetAllTeamsController from '../GetAllTeamsController';
+import GetAllTeamsController from './GetAllTeamsController';
 import GetAllTeamsService from '../../services/GetAllTeamsService';
 import GetOneTeamService from '../../services/GetOneTeamService';
-import GetOneTeamController from '../GetOneTeamController';
+import GetOneTeamController from './GetOneTeamController';
 import TeamServiceRepository from '../../services/repositories/TeamServiceRepository';
 
 const teamServiceRepository = new TeamServiceRepository();
