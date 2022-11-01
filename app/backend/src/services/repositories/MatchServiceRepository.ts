@@ -28,6 +28,18 @@ class MatchServiceRepository implements IMatchServiceRepository {
     return macthesInProgress;
   };
 
+  public progressFalse = async () => {
+    const macthesInProgress = await this._matchModel.findAll({
+      where: { inProgress: false },
+      include: [
+        { model: Team, as: 'teamHome', attributes: ['teamName'] },
+        { model: Team, as: 'teamAway', attributes: ['teamName'] },
+      ],
+    });
+
+    return macthesInProgress;
+  };
+
   public create = async (match: IMatch) => {
     // console.log('entrei no repo match');
     const addMatch = await this._matchModel.create({ ...match, inProgress: true });
