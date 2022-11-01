@@ -6,6 +6,7 @@ import {
   updateFinishMatchController,
   updateMatchResultController,
 } from './matches/matchesInstances';
+import leaderboardController from './leaderboard/leaderboardInstances';
 
 export {
   makeLoginController,
@@ -15,4 +16,5 @@ export {
   createMatchController,
   updateFinishMatchController,
   updateMatchResultController,
+  leaderboardController,
 };
