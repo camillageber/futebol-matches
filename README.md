@@ -1,4 +1,4 @@
-# TFC - Trybe Football Club
+# Futebol Matches
 
 The project's goal was to create a restful API that connects to a mySQL database via Sequelize in order to read, create, filter, update, the data and so on. The following routes were created: login, matches, teams, and leaderboard.
 
